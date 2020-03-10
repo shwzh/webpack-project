@@ -3,11 +3,14 @@
 const path = require('path')
 
 module.exports = {
-    mode: 'production',
-    entry: './src/index.js',
+    mode: 'development',
+    entry: {
+        index: './src/index.js',
+        search: './src/search.js'
+    },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: "bundle.js"
+        path: path .join(__dirname, 'dist'),
+        filename: '[name].js'
     },
     module: {
         rules: [
@@ -16,12 +19,37 @@ module.exports = {
                 use: 'babel-loader',
             },
             {
-                test: '/\.css$/',
+                test: '/.css$/',
                 use: [
-                    ''
+                    'style-loader',
+                    'css-loader',
                 ]
+            },
+            {
+                test: '/.less$/',
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader',
+                ]
+            },
+            {
+                test: '/.(jpg|png|jpeg)$/',
+                // use: 'file-loader',
+                use:[
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10240
+                        }
+                    }
+                ]
+            },
+            {
+                test: '/.(woff|otf|woff2|eot|ttf)$/',
+                use: 'file-loader',
             }
         ]
-    }
+    },
 
 }

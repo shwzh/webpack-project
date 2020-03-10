@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "babel": "^6.23.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
+    "file-loader": "^5.1.0",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "style-loader": "^1.1.3",
