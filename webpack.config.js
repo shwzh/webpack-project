@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
     mode: 'development',
@@ -15,18 +16,18 @@ module.exports = {
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: /\.(js|jsx)$/,
                 use: 'babel-loader',
             },
             {
-                test: '/.css$/',
+                test: /\.css$'/,
                 use: [
                     'style-loader',
                     'css-loader',
                 ]
             },
             {
-                test: '/.less$/',
+                test: /\.less$/,
                 use: [
                     'style-loader',
                     'css-loader',
@@ -34,7 +35,7 @@ module.exports = {
                 ]
             },
             {
-                test: '/.(jpg|png|jpeg)$/',
+                test: /\.(jpg|png|jpeg)$/,
                 // use: 'file-loader',
                 use:[
                     {
@@ -46,10 +47,18 @@ module.exports = {
                 ]
             },
             {
-                test: '/.(woff|otf|woff2|eot|ttf)$/',
+                test: /\.(woff|otf|woff2|eot|ttf)$/,
                 use: 'file-loader',
             }
         ]
     },
+    // 热更新
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: './dist',
+        hot: true
+    }
 
 }
