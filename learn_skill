@@ -2,6 +2,7 @@
 
 "dev": "webpack-dev-server --open"   --open 是自动打开浏览器
 
+
 命令配置
  "build": "webpack --config webpack.prod.js",
  "dev": "webpack-dev-server --config webpack.dev.js --open"
@@ -25,3 +26,28 @@ js: uglifyjs-webpack-plugin 这是webpack中内置的压缩  js文件会被自�
 css: optimize-css-assets-webpack-plugin && cssnano(匹配css文件)
 
 html: html-webpack-plugin  
+
+
+清除 dist文件 
+npm i clean-webpack-plugin -D
+
+
+自动补全 css3浏览器的兼容
+
+npm i postcss-loader autoprefixer -D
+
+
+px -> rem 
+npm i px2rem-loader -D
+npm i lib-flexible -S
+
+
+静态资源内联
+npm i raw-loader@0.5.1 -D  rawloader原理就是 直接读取某些文件 返回string 把string插入某个位置
+raw-loader @0.5.1  可以内联html js 
+css 内联
+    方案一： style-loader 
+    方案二： html-inline-css-webpack-plugin
+
+
+

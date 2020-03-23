@@ -5,6 +5,8 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
 module.exports = {
     entry: {
         index: './src/index.js',
@@ -34,6 +36,23 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'less-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => {
+                                require('autoprefixer')({
+                                    browsers: ['last2 version', '>1%', 'ios 7']
+                                })
+                            }
+                        }
+                    },
+                    {
+                        loader: 'px2rem-loader',
+                        options: {
+                            remUnit: 75,
+                            remPrecision: 8
+                        }
+                    }
                 ]
             },
             {
@@ -99,7 +118,6 @@ module.exports = {
                 removeComments: true,
             }
         }),
-
+        new CleanWebpackPlugin()
     ]
-
 }
