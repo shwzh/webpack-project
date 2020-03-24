@@ -37,12 +37,12 @@ npm i clean-webpack-plugin -D
 npm i postcss-loader autoprefixer -D
 
 
-px -> rem 
+## px -> rem 
 npm i px2rem-loader -D
 npm i lib-flexible -S
 
 
-静态资源内联
+## 静态资源内联
 npm i raw-loader@0.5.1 -D  rawloader原理就是 直接读取某些文件 返回string 把string插入某个位置
 raw-loader @0.5.1  可以内联html js 
 css 内联
@@ -50,7 +50,7 @@ css 内联
     方案二： html-inline-css-webpack-plugin
 
 
-多页面应用  
+## 多页面应用  
 页面之间 是 解耦的  有利于seo的优化
 
 利用 glob  glob.sync
@@ -58,6 +58,26 @@ glob原理是 查询某文件夹下的文件目录 或者 匹配相应正则的�
 动态更改entry 与 htmlWebpackPlugin
 
 npm i glob -D
+
+
+## sourceMap
+sourceMap的关键字
+
+devtool: 'source-map'
+
+eval 
+source-map
+inline-source-map
+cheap-source-map
+
+
+## 提取公共资源文件
+
+html-webpack-externals-plugin
+
+SplitChunksplugin
+
+
 
 
 
