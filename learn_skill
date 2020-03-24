@@ -77,6 +77,11 @@ html-webpack-externals-plugin
 
 SplitChunksplugin
 
+## tree-shaking  无用的代码 不在进行打包
+  在编译阶段对无使用 或者 无用的代码 进行标记 通过 uglify来进行清除
+
+
+
 
 
 
