@@ -22,7 +22,7 @@ const setMPA = () => {
             new HtmlWebpackPlugin({
                 template: path.join(__dirname, `src/${pageName}/index.html`),
                 filename: `${pageName}.html`,
-                chunks:[pageName],
+                chunks:['vendors',pageName],
                 inject: true,
                 minify: {
                     html5: true,
@@ -111,7 +111,6 @@ module.exports = {
             }
         ]
     },
-
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name]_[contenthash:8].css'
@@ -122,20 +121,34 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         // react 单独打包出去 不在打包到js里面
-        new HtmlWebpackExternalsPlugin({
-            externals: [
-                {
-                    module: 'react',
-                    entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
-                    global: 'React',
-                },{
-                    module: 'react-dom',
-                    entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-                    global: 'ReactDom',
-                }
+        // new HtmlWebpackExternalsPlugin({
+        //     externals: [
+        //         {
+        //             module: 'react',
+        //             entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
+        //             global: 'React',
+        //         },{
+        //             module: 'react-dom',
+        //             entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+        //             global: 'ReactDom',
+        //         }
                 
-            ]
-        })
+        //     ]
+        // })
 
-    ].concat(htmlWebpackPlugin)
+    ].concat(htmlWebpackPlugin),
+    optimization: {
+        splitChunks: {
+            minSize: 0,  //引用模块文件的大小
+            cacheGroups: {
+                commons: {
+                    // test: /(react|react-dom)/, // 中间不能有空格
+                    // name: 'vendors',
+                    name: 'commons',  //文件名字
+                    chunks: 'all',
+                    minChunks: 2  // 至少被引用的次数 才会被单独打包
+                }
+            }
+        }
+    }
 }

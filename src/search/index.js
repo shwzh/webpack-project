@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ReactDom from 'react-dom'
+import '../../common'
 import './search.less'
 
 class Search extends React.Component {
