@@ -6,7 +6,7 @@ import './search.less'
 
 class Search extends React.Component {
     render() {
-        return <div className='searchText'>搜索文字</div>;
+        return <div className='searchText'>搜索文字 见证多页面打包 我是第二个页面search</div>;
     }
 }
 

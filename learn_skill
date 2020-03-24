@@ -19,7 +19,7 @@ MiniCssExtractPlugin.loader 是将所有的css打包程文件的格式插入 hea
 
 style-loader 是将css 插入 head 标签中
 
-代码压缩   html js css 压缩
+代码压缩   html js css 压缩       chunkhash contenthash hash
 
 js: uglifyjs-webpack-plugin 这是webpack中内置的压缩  js文件会被自动压缩  也可单独安装下载 进行一些参数的设置
 
@@ -48,6 +48,18 @@ raw-loader @0.5.1  可以内联html js
 css 内联
     方案一： style-loader 
     方案二： html-inline-css-webpack-plugin
+
+
+多页面应用  
+页面之间 是 解耦的  有利于seo的优化
+
+利用 glob  glob.sync
+glob原理是 查询某文件夹下的文件目录 或者 匹配相应正则的文件  
+动态更改entry 与 htmlWebpackPlugin
+
+npm i glob -D
+
+
 
 
 
