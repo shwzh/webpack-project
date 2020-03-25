@@ -121,22 +121,21 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         // react 单独打包出去 不在打包到js里面
-        // new HtmlWebpackExternalsPlugin({
-        //     externals: [
-        //         {
-        //             module: 'react',
-        //             entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
-        //             global: 'React',
-        //         },{
-        //             module: 'react-dom',
-        //             entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-        //             global: 'ReactDom',
-        //         }
+        new HtmlWebpackExternalsPlugin({
+            externals: [
+                {
+                    module: 'react',
+                    entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
+                    global: 'React',
+                },{
+                    module: 'react-dom',
+                    entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+                    global: 'ReactDom',
+                }
                 
-        //     ]
-        // })
+            ]
+        }),
         new webpack.optimize.ModuleConcatenationPlugin(),
-
 
     ].concat(htmlWebpackPlugin),
     optimization: {

@@ -94,8 +94,12 @@ npm i postcss-loader autoprefixer -D
    new webpack.optimize.ModuleConcatenationPlugin( )
 
 
-## 
+## 代码分割
+    动态 import 用的时候再去引用     webpack 利用的是 webpackJsonp 直接去请求的资源 
+    类似懒加载 js
+    @babel/plugin-syntax-dynamic-import
 
+    动态 import 的 js 会被单独打出来一个包 等用到的时候再去加载 
 
 
 

@@ -8,9 +8,31 @@ import './search.less'
 
 if(0) a()
 class Search extends React.Component {
+    constructor() {
+        super(...arguments);
+        this.state = {
+            Text: null
+        }
+    }
+    handleClick() {
+        import('./test').then((Text) => {
+            this.setState({
+                Text : Text.default
+            })
+        })
+    }
+
     render() {
+
         const funcA = a()
-    return <div className='searchText'>{funcA}搜索文字 见证多页面打包 我是第二个页面search</div>;
+        const { Text } = this.state
+        return <div className='searchText'>
+                {
+                    Text ? <Text /> : null
+                }
+                {funcA}搜索文字 见证多页面打包 我是第二个页面search
+                <button onClick={this.handleClick.bind(this)}>点击 动态import</button>
+            </div>;
     }
 }
 
