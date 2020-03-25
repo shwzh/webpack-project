@@ -38,47 +38,66 @@ npm i postcss-loader autoprefixer -D
 
 
 ## px -> rem 
-npm i px2rem-loader -D
-npm i lib-flexible -S
+    npm i px2rem-loader -D
+    npm i lib-flexible -S
 
 
 ## 静态资源内联
-npm i raw-loader@0.5.1 -D  rawloader原理就是 直接读取某些文件 返回string 把string插入某个位置
-raw-loader @0.5.1  可以内联html js 
-css 内联
-    方案一： style-loader 
-    方案二： html-inline-css-webpack-plugin
+    npm i raw-loader@0.5.1 -D  rawloader原理就是 直接读取某些文件 返回string 把string插入某个位置
+    raw-loader @0.5.1  可以内联html js 
+    css 内联
+        方案一： style-loader 
+        方案二： html-inline-css-webpack-plugin
 
 
 ## 多页面应用  
-页面之间 是 解耦的  有利于seo的优化
+    页面之间 是 解耦的  有利于seo的优化
 
-利用 glob  glob.sync
-glob原理是 查询某文件夹下的文件目录 或者 匹配相应正则的文件  
-动态更改entry 与 htmlWebpackPlugin
+    利用 glob  glob.sync
+    glob原理是 查询某文件夹下的文件目录 或者 匹配相应正则的文件  
+    动态更改entry 与 htmlWebpackPlugin
 
-npm i glob -D
+    npm i glob -D
 
 
 ## sourceMap
-sourceMap的关键字
+    sourceMap的关键字
 
-devtool: 'source-map'
+    devtool: 'source-map'
 
-eval 
-source-map
-inline-source-map
-cheap-source-map
+    eval 
+    source-map
+    inline-source-map
+    cheap-source-map
 
 
 ## 提取公共资源文件
 
-html-webpack-externals-plugin
+  html-webpack-externals-plugin
 
-SplitChunksplugin
+  SplitChunksplugin
 
 ## tree-shaking  无用的代码 不在进行打包
   在编译阶段对无使用 或者 无用的代码 进行标记 通过 uglify来进行清除
+  在.babelrc中 设置  modules: false
+  在默认production中 会默认开启tree-thaking 
+
+## scope hoisting
+   防止webpack 打包后出现很多闭包  体积增大  创建函数的作用于较多  导致占用内存 
+
+    为啥打包后是闭包： 浏览器解析 存在很多兼容，不支持某些特性，需要进行转换才能被支持
+    转换后的代码会被包裹一层， import 会被转换成 __webpack_require__  export 被换成 __webpack_export__
+
+   produciton 环境中 默认已经开启 
+   必须是es6用法 cjs 不支持
+
+   new webpack.optimize.ModuleConcatenationPlugin( )
+
+
+## 
+
+
+
 
 
 

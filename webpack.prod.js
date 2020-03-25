@@ -135,6 +135,8 @@ module.exports = {
                 
         //     ]
         // })
+        new webpack.optimize.ModuleConcatenationPlugin(),
+
 
     ].concat(htmlWebpackPlugin),
     optimization: {
